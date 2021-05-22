@@ -1,0 +1,25 @@
+@mixin flex($value) {
+    display: flex;
+    align-items: center;
+    @if($value == 'ce') {
+        justify-content: center;
+    } @else if($value == 'sb') {
+        justify-content: space-between;
+    } @else if($value == 'st') {
+        justify-content: flex-start;
+    } @else if($value == 'en') {
+        justify-content: flex-end;
+    }
+}
+
+@mixin transform($value) {
+    transform: $value;
+    -ms-transform: $value;
+    -webkit-transform: $value;
+}
+
+@mixin transition($value) {
+    transition: $value;
+    -o-transition: $value;
+    -webkit-transition: $value;
+}

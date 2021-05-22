@@ -1,0 +1,536 @@
+// sass assets/scss/style.scss assets/css/style.css --watch
+@import "./fonts/font";
+@import "./variables/variables";
+@import "./base/base";
+@import "./grid/grid";
+@import "./mixin/mixin";
+@import "./buttons/button";
+
+// HEADER COMPONENT
+@import "./pages/components/header";
+
+// PAGES
+
+.app {
+    @include flex(ce);
+    width: 100%;
+    height: 100vh;
+
+    .container {
+        box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+    }
+
+    .sidebar {
+        border-right: 1px solid rgba($main-color, 0.2);
+        padding: 20px;
+        height: 900px;
+
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+
+        .navigation {
+            .logo {
+                display: block;
+                margin: 10px 0 40px 20px;
+                width: fit-content;
+
+                @media only screen and (max-width: 1200px) {
+                    margin: 10px auto 40px;
+                }
+
+                .logo-lg {
+                    @media only screen and (max-width: 1200px) {
+                        display: none;
+                    }
+                }
+
+                .logo-sm {
+                    display: none;
+                    @media only screen and (max-width: 1200px) {
+                        display: block;
+                    }
+                }
+            }
+
+            ul {
+                li {
+                    a {
+                        display: flex;
+                        align-items: center;
+                        margin: 10px 0;
+                        padding: 10px 20px;
+                        border-radius: 12px;
+                        @include transition(all 0.1s linear);
+
+                        &.active {
+                            img {
+                            }
+                            span {
+                                color: $main-color;
+                            }
+                        }
+
+                        &:hover {
+                            background-color: $white-color-regular;
+                        }
+
+                        img {
+                            margin-right: 10px;
+                        }
+
+                        span {
+                            font-size: 16px;
+                            font-weight: 500;
+                            color: $black-color;
+                        }
+
+                        @media only screen and (max-width: 1200px) {
+                            flex-direction: column;
+
+                            img {
+                                margin-right: 0;
+                                margin-bottom: 10px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .upload {
+            .drag-area {
+                border: 1px dashed $main-color;
+                border-radius: 12px;
+                width: 100%;
+                height: 200px;
+                @include flex(ce);
+                flex-direction: column;
+                text-align: center;
+
+                &.active {
+                    border-style: solid;
+                }
+
+                p {
+                    font-size: 14px;
+                    font-weight: 500;
+                }
+
+                span {
+                    font-size: 14px;
+                    font-weight: 500;
+                    margin: 10px 0;
+                }
+
+                button {
+                    width: fit-content;
+                    padding: 10px 20px;
+                    font-size: 14px;
+                    font-weight: 400;
+                }
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    border-radius: 12px;
+                }
+            }
+
+            .text-error {
+                color: #f16565;
+                margin: 10px;
+            }
+
+            .btn {
+                width: 100%;
+                padding: 20px 0;
+                font-weight: 500;
+                font-size: 16px;
+                letter-spacing: 1px;
+            }
+        }
+    }
+
+    .content {
+        padding: 20px 40px;
+        height: 900px;
+        overflow: hidden;
+
+        .header {
+            @include flex(sb);
+
+            .title {
+                font-size: 36px;
+                font-weight: 700;
+            }
+            .control-box {
+                @include flex(st);
+
+                .search-box {
+                    position: relative;
+
+                    img {
+                        position: absolute;
+                        top: 50%;
+                        left: 10px;
+                        @include transform(translateY(-50%));
+                    }
+
+                    .search {
+                        min-width: 350px;
+                        padding: 10px 0 10px 40px;
+                        border-radius: 12px;
+                        border: 1px solid rgba($main-color, 0.2);
+                        font-size: 16px;
+                        font-weight: 400;
+                        @include transition(all 0.1s linear);
+
+                        &:focus {
+                            border-color: rgba($main-color, 0.4);
+                        }
+                    }
+                }
+                .icon-box {
+                    margin: 0 30px;
+                    button {
+                        &:first-child {
+                            margin-right: 10px;
+                        }
+
+                        &:last-child {
+                            margin-left: 10px;
+                        }
+                        img {
+                        }
+                    }
+                }
+                .account-box {
+                    button {
+                        img {
+                        }
+                    }
+                }
+            }
+        }
+        .box {
+            @include flex(sb);
+            margin: 50px 0 20px;
+
+            .title {
+                font-size: 24px;
+                font-weight: 500;
+            }
+
+            .box-select {
+                .box-select-container {
+                    position: relative;
+
+                    .react-select__control {
+                        display: flex;
+                        padding: 0px 12px;
+                        border: none;
+                        background-color: $white-color-regular;
+                        border-radius: 12px;
+                        width: 150px;
+                        box-shadow: none;
+
+                        .react-select__value-container {
+                        }
+
+                        .react-select__indicators {
+                            .react-select__indicator-separator {
+                                display: none;
+                            }
+                        }
+                    }
+
+                    .react-select__menu {
+                        width: 100%;
+                        background-color: $white-color;
+                        display: block;
+                        border-radius: 12px;
+                        overflow: hidden;
+                        position: absolute;
+                        top: 42px;
+                        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+                        .react-select__menu-list {
+                            .react-select__option {
+                                padding: 10px 12px;
+                                cursor: pointer;
+                                background-color: $white-color;
+                                color: inherit;
+
+                                &.react-select__option--is-focused {
+                                }
+                                &:hover {
+                                    background-color: $white-color-regular;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .file-box {
+            height: 83%;
+            overflow-y: auto;
+
+            /* scrollbar width */
+            &::-webkit-scrollbar {
+                width: 8px;
+            }
+
+            /* scrollbar Track */
+            &::-webkit-scrollbar-track {
+                background: rgba(0, 0, 0, 0);
+            }
+
+            /* scrollbar Handle */
+            &::-webkit-scrollbar-thumb {
+                background: rgba(0, 0, 0, 0.1);
+                border-radius: 10px;
+            }
+
+            /* scrollbar Handle on hover */
+            &::-webkit-scrollbar-thumb:hover {
+                background: rgba(0, 0, 0, 0.2);
+            }
+
+            .table {
+                width: 100%;
+                border-collapse: collapse;
+                tr {
+                    &:first-child {
+                        border-bottom: 1px solid rgba($main-color, 0.4);
+                    }
+
+                    &:not(:first-child) {
+                        &:hover {
+                            background-color: $white-color-regular;
+                        }
+                    }
+
+                    th {
+                        text-align: start;
+                        font-size: 16px;
+                        font-weight: 400;
+                        padding: 20px 0;
+
+                        .sort-icon {
+                            position: relative;
+                            top: 2px;
+                            left: 4px;
+                        }
+                    }
+
+                    td {
+                        padding: 20px 0;
+                        font-size: 16px;
+                        font-weight: 500;
+
+                        .name-box {
+                            @include flex(st);
+                            img {
+                                margin-right: 20px;
+                            }
+                            span {
+                            }
+                        }
+
+                        .dropdown-box {
+                            position: relative;
+
+                            .react-select-container {
+                                width: fit-content;
+                                .react-select__control {
+                                    border: none;
+                                    background-color: transparent;
+                                    min-height: auto;
+                                    box-shadow: none;
+                                    .react-select__value-container {
+                                        opacity: 0;
+                                        width: 0;
+                                        padding: 0;
+                                    }
+
+                                    .react-select__indicators {
+                                        .react-select__indicator-separator {
+                                            display: none;
+                                        }
+                                    }
+                                }
+
+                                .react-select__menu {
+                                    width: fit-content;
+                                    right: 0;
+                                    border-radius: 12px;
+                                    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                                    overflow: hidden;
+                                    .react-select__menu-list {
+                                        .react-select__option {
+                                            background-color: $white-color;
+                                            color: $black-color;
+                                            &.react-select__option--is-focused {
+                                                background-color: $white-color-regular;
+                                                color: $black-color;
+                                            }
+                                            &:hover {
+                                                background-color: $white-color-regular;
+                                                cursor: pointer;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
+                            .dropdown-btn {
+                                border-radius: 50%;
+                                width: 30px;
+                                height: 30px;
+                                cursor: pointer;
+                                @include flex(ce);
+                                @include transition(all 0.1s linear);
+
+                                &:hover {
+                                    background-color: $white-color;
+                                    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                                }
+                                i {
+                                }
+                            }
+
+                            .dropdown-options {
+                                position: absolute;
+                                top: 34px;
+                                right: 20px;
+                                background-color: $white-color;
+                                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                                border-radius: 12px;
+                                z-index: 1;
+                                opacity: 0;
+                                pointer-events: none;
+
+                                &.active {
+                                    opacity: 1;
+                                    pointer-events: visible;
+                                }
+
+                                li {
+                                    padding: 4px 20px;
+                                    @include transition(all 0.1s linear);
+                                    cursor: pointer;
+
+                                    &:hover {
+                                        background-color: $white-color-regular;
+                                    }
+                                }
+                            }
+
+                            a {
+                                position: fixed;
+                                opacity: 0;
+                                pointer-events: none;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .file-popup {
+                position: fixed;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                z-index: 999;
+                @include flex(ce);
+
+                .overlay {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    background-color: rgba(0, 0, 0, 0.5);
+                }
+
+                .file-details {
+                    z-index: 1;
+                    background-color: $white-color;
+                    border-radius: 12px;
+                    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+                    padding: 20px;
+                    width: 400px;
+                    height: auto;
+                    min-height: 400px;
+                    display: flex;
+                    justify-content: space-between;
+                    flex-direction: column;
+                    position: relative;
+
+                    .file-close-btn {
+                        position: absolute;
+                        top: 16px;
+                        right: 16px;
+                        cursor: pointer;
+                        width: 22px;
+                        height: 22px;
+                        border-radius: 50%;
+                        padding: 4px;
+                        @include transition(all 0.2s linear);
+
+                        &:hover {
+                            background-color: #ccc;
+                            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                        }
+                    }
+
+                    .file-heading {
+                        @include flex(ce);
+                        flex-direction: column;
+                        margin-top: 40px;
+
+                        .file-image {
+                            width: 70px;
+                            height: 70px;
+                            img {
+                                width: 100%;
+                                height: 100%;
+                                object-fit: cover;
+                            }
+                        }
+
+                        .file-title {
+                            margin-top: 20px;
+                            text-align: center;
+                        }
+
+                        .file-download {
+                            color: $black-color;
+                            margin-top: 10px;
+                        }
+                    }
+
+                    .file-body {
+                        @include flex(sb);
+                        margin: 20px 0;
+
+                        .file-size {
+                            @include flex(st);
+                            p {
+                                margin-right: 10px;
+                            }
+                            span {
+                            }
+                        }
+
+                        .file-date {
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

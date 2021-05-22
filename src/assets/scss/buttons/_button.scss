@@ -1,0 +1,30 @@
+.btn {
+    border: none;
+    outline: none;
+    border-radius: 12px;
+    background-color: $white-color-regular;
+    color: $black-color;
+    cursor: pointer;
+
+    &.sm {
+        padding: 16px 30px;
+    }
+
+    &.md {
+        padding: 18px 32px;
+    }
+
+    &.lg {
+        padding: 12px 28px;
+    }
+
+    &.btn-primary {
+        background-color: #3055b6;
+        color: $white-color;
+        @include transition(all 0.1s linear);
+
+        &:hover {
+            opacity: 0.9;
+        }
+    }
+}
